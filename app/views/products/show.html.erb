@@ -1,0 +1,37 @@
+ 
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+
+<p>
+
+  <strong>Price :</strong>
+  <%= @product.price %>
+</p>
+
+
+
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
+<% @product.reviews.each do |review| %>
+<hr>
+<div>
+<h2>Review</h2>
+
+<b> <%= review.title %></b></div></br>
+<%= time_ago_in_words(review.created_at) %> ago, <%= review.author %> said :<br/>
+<p> <%= review.content %> </p>
+<p> Rating: <%= review.rating  %>/10</p>
+<% end %>
+
+<hr>
+
+<%= render "form_review" , product_id: @product.id %>
+
+	
+
