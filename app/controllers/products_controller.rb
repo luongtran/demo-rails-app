@@ -1,10 +1,12 @@
 class ProductsController < ApplicationController
   def index
    @products = Product.all
+   @categories = Category.all
    @order_item = current_order.order_items.new
   end
   def new
     @product = Product.new
+    @categories = Category.all
   end
 
   # GET /products/1/edit
@@ -12,6 +14,7 @@ class ProductsController < ApplicationController
   end
   def show
     @product = Product.find(params[:id])
+     @order_item = current_order.order_items.new
   end
 
   # POST /products
@@ -62,6 +65,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :price)
+      params.require(:product).permit(:name, :price,:category_id)
     end
 end

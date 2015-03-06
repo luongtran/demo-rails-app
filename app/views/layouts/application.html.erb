@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cart</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application' %>
-  <%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
-  <%= javascript_include_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
- 
   <%= csrf_meta_tags %>
 </head>
 <body>
- <div class="container">
-    <div class="row">
+  <%= render "layouts/header" %>
+ <div class="row" style="
+    margin-top: 50px;
+">
       <div class="col-xs-6">
-        <h1><%= link_to "My Store" %></h1>
+       
       </div>
+
       <div class="col-xs-6 text-right">
         <h1 class="cart-text"><%= render 'layouts/cart_text' %></h1>
       </div>
     </div>
     <hr>
+</div>
 <%= yield %>
 
 </body>
