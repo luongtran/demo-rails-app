@@ -1,0 +1,5 @@
+
+   <% @categories.each do |category| %>
+   <%= link_to category.name,show_products_path(category.id) %>
+   <br>
+   <% end %>

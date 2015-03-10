@@ -29,7 +29,6 @@
             </li>
 
           </ul>
-
           <ul class="nav navbar-nav navbar-right">
               <% if logged_in? %>
             <li class="active"><%= current_user.present? ? "Welcome, #{current_user.email}": "Hi,Guest" %></li>

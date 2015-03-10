@@ -11,7 +11,15 @@ class CategoriesController < ApplicationController
   # GET /categories/1.json
   def show
   end
+  def show_products
+    @products=Category.find(params[:id]).products()
+    @order_item = current_order.order_items.new
 
+    respond_to do |format|
+    format.html { render :show_products }
+    format.json { render json: {products: @products,order_items: @order_item}}
+    end
+  end  
   # GET /categories/new
   def new
     @category = Category.new
@@ -49,7 +57,7 @@ class CategoriesController < ApplicationController
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end
-  end
+    end
 
   # DELETE /categories/1
   # DELETE /categories/1.json
@@ -66,7 +74,6 @@ class CategoriesController < ApplicationController
     def set_category
       @category = Category.find(params[:id])
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:name)

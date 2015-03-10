@@ -5,12 +5,22 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   
   helper_method :current_order
+  before_action :load_categories
   def current_order
   	if session[:order_id].present?
       Order.find(session[:order_id])
   	else
   	  Order.new  	
     end
+ 
   end
+ 
+
+
+private
+def load_categories
+  @categories = Category.all()
+end
+
 
 end

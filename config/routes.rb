@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
-  resources :categories
+  resources  :categories
 
-  resources :groups
+  resources  :groups
 
-  resources :users
-   resources :reviews
+  resources  :users
+  resources :reviews
 
   get 'order_items/create'
 
@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'carts/show'
 
   get 'products/index'
+  get 'show_products/:id' => 'categories#show_products' , :as => "show_products"
  
   resources :products
   resource :cart, only: [:show]
