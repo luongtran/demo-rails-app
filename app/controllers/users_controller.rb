@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.order(:username).page(params[:page]).per(5)
+   
   end
 
   # GET /users/1
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
       if @user.save
         # group=Group.find(1);
          #@user.groups<<group
-         UserMailer.welcome_email().deliver!
+         #UserMailer.welcome_email().deliver!
          #UserMailer.welcome_email(@user).deliver_later
         format.html { redirect_to @user, notice: 'User was successfully created .'}
         format.json { render :show, status: :created, location: @user }
@@ -63,6 +64,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
+      
     end
   end
 

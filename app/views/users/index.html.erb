@@ -1,5 +1,5 @@
 <h1>Listing users</h1>
-
+<%= paginate @users  %>
 <table>
   <thead>
     <tr>
@@ -23,7 +23,7 @@
        <td><%= image_tag user.avatar.url(:medium) %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, remote: true, class: "delete_user",data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

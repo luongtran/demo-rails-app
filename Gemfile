@@ -27,6 +27,10 @@ gem "paperclip", "~> 4.2"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'tinymce-rails'
+#panning
+gem 'kaminari'
+#facebook
+#gem 'omniauth-facebook'
 # Use unicorn as the app server
 # gem 'unicorn'
 
@@ -38,4 +42,6 @@ gem 'tinymce-rails'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
+#bootstrap
 gem 'bootstrap-sass', '~> 3.3.3'
+
