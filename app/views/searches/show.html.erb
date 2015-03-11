@@ -1,0 +1,7 @@
+<h1>Search Results</h1>
+
+<%  @search.products.each do |product| %>
+
+    <%= render  "products/product_row", product: product, order_item: @order_item %>
+   
+<% end %>

@@ -1,9 +1,11 @@
 class ProductsController < ApplicationController
   def index
-   @products = Product.all
+  # @products = Product.all
+   @products = Product.search(params[:search])
    @categories = Category.all
    @order_item = current_order.order_items.new
   end
+  
   def new
     @product = Product.new
     @categories = Category.all
