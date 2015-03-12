@@ -40,17 +40,14 @@
   <div class="field">
     <%= f.label :company %><br>
   
-<%= f.text_area :company, :class => "tinymce", :rows => 10, :cols => 120 %>
+<%= f.text_area :company, class: "tinymce", row: 10, col: 10 %>
   </div>
- 
-   <div class="field">
+    <div class="field">
     <%= f.label :avatar %><br>
     <%= f.file_field :avatar %>
     </div>
-  
-
-  <div class="actions">
-      <%= f.submit %>
+   <div class="actions ">
+      <%= f.submit class: "btn btn-info" %>
   </div>
 <% end %>
 

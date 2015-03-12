@@ -6,34 +6,31 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
   <%= render "layouts/header" %>
- <div class="row" style="
-    margin-top: 50px;
-">
-      <div class="col-xs-6">
-       
-      </div>
 
-      <div class="col-xs-6 text-right">
-        <h1 class="cart-text"><%= render 'layouts/cart_text' %></h1>
-      </div>
-    </div>
-    <hr>
-</div>
-<div class="row">
+        <div class="row mt50 ">
+           <h1 class="cart-text pull-right"><%= render 'layouts/cart_text' %></h1>
+        </div>
 
-<div class="col-xs-4">
+            <hr>
+       <div class="navbar-default sidebar" role =""navigation>
+         
+        <div class="sidebar-nav navbar-collapse">
 
- <%= render "categories/show" %>
-</div>
+          <ul id="side-menu" class="nav">
 
-<div class="col-xs-8">
-  <%= yield %>
+             <%= render "categories/show" %>
 
-</div>
-  
-  
+          </ul>
+            
+        </div> 
+       </div>
+       <div id="page-wrapper">
+          <%= yield %>
 
+       </div>
+        
 </div>
 
 </body>

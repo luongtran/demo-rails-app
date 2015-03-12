@@ -1,35 +1,29 @@
 	 <div class="row">
-	 	<div class="col-xs-2">
-	 	</div>
-	 	<div class="col-xs-8">
-	  
+	 <div class="pull-left">
+	 	<%= link_to 'Edit', edit_product_path(@product) %> |
+		<%= link_to 'Back', products_path %> 
+		</div>
+
 	 	 <%= render "product_row", product: @product, order_item: @order_item %>
-	 	</div>
+	 	
 	 </div>
 
 	 <div class="row">
-	 	<div class="col-xs-2">
-	 	</div>
-	 	 <div class="col-xs-8">
-			<%= link_to 'Edit', edit_product_path(@product) %> |
-			<%= link_to 'Back', products_path %>
+	 			
 			<% @product.reviews.each do |review| %>
 			<hr>
 			<h2>Review</h2>
 			<b> <%= review.title %></b></br>
 			<%= time_ago_in_words(review.created_at) %> ago, <%= review.author %> said :<br/>
 			<p> <%= review.content %> </p>
-			<p> Rating: <%= review.rating  %>/10</p>
+			<p class="label label-success"> Rating: <%= review.rating  %>/10</p>
 			<% end %>
 			<hr>
-	 	</div>
+	 	
 	 </div>
 
 	 <div class="row">
-	 <div class="col-xs-2">
-	 	</div>
-	  	<div class="col-xs-8">
+	  	
 			<%= render "form_review" , product_id: @product.id %>
-		</div>
 	</div>
 

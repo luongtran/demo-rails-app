@@ -14,3 +14,14 @@
 //= require jquery_ujs
 //= require tinymce-jquery
 //= require bootstrap
+
+$(document).ready( ->
+  $('.delete_user').bind('ajax:success', ->$(this).closest('tr').fadeOut();
+  );
+  
+  source = new EventSource('/messages/events')
+  source.addEventListener 'messages.create', (e) ->
+  message = $.parseJSON(e.data).message
+  $('#chat').append($('<li>').text("#{message.name}: #{message.content}"))
+
+);

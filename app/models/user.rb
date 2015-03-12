@@ -5,6 +5,14 @@ class User < ActiveRecord::Base
   
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 # validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  validates :username,  presence: true, length: { maximum: 50 }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX }
+
+   validates :first_name,  presence: true
+   validates :last_name,  presence: true                
+
 
  validates_attachment_content_type :avatar,content_type: ['image/jpg','image/png','image/gif','image/jpeg']
   

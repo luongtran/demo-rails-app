@@ -1,0 +1,13 @@
+<% @users.each do |user| %>
+      <tr>
+       <td><%= user.username %></td>
+       <td><%=user.first_name%></td>
+       <td><%=user.last_name%></td>
+       <td><%=user.title%></td>
+      
+       <td><%= image_tag user.avatar.url(:medium) %></td>
+        <td><%= link_to 'Show', user %>
+        <%= link_to 'Edit', edit_user_path(user) %>
+        <%= link_to 'Destroy', user, method: :delete, class: "delete_user", data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>

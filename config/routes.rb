@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :messages
+
   get    'signup'  => 'users#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
@@ -27,6 +29,11 @@ Rails.application.routes.draw do
   resources :order_items, only: [:create, :update, :destroy]
   root to: "products#index"
   resources :searches
+
+    resources :messages do
+    collection { get :events }
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
