@@ -25,9 +25,7 @@
                 <li class="dropdown-header">Nav header</li>
                 <li><a href="#">Separated link</a></li>
                 <li><a href="#">One more separated link</a></li>
-                
               </ul>
-
             </li>
              <li class="mt10">
                   <%= form_tag products_path, method: :get do %>
@@ -40,8 +38,7 @@
                   <li class="mt10 ml15">
                   <p><%= link_to "Advanced Search", new_search_path %></p>
                 </li>
-        
-          </ul>
+              </ul>
           <ul class="nav navbar-nav navbar-right">
               <% if logged_in? %>
             <li class="active"><%= current_user.present? ? "Welcome, #{current_user.email}": "Hi,Guest" %></li>

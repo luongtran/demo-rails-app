@@ -6,32 +6,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <%= render "layouts/header" %>
-
         <div class="row mt50 ">
            <h1 class="cart-text pull-right"><%= render 'layouts/cart_text' %></h1>
         </div>
-
             <hr>
        <div class="navbar-default sidebar" role =""navigation>
-         
-        <div class="sidebar-nav navbar-collapse">
-
+          <div class="sidebar-nav navbar-collapse">
           <ul id="side-menu" class="nav">
-
              <%= render "categories/show" %>
-
           </ul>
-            
-        </div> 
+         </div> 
        </div>
        <div id="page-wrapper">
           <%= yield %>
-
        </div>
-        
-</div>
-
+    </div>
 </body>
 </html>

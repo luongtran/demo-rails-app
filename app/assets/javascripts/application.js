@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require tinymce-jquery
+//= require tinymce
 //= require bootstrap
 
 $(document).ready( ->
@@ -23,5 +24,4 @@ $(document).ready( ->
   source.addEventListener 'messages.create', (e) ->
   message = $.parseJSON(e.data).message
   $('#chat').append($('<li>').text("#{message.name}: #{message.content}"))
-
 );
