@@ -1,83 +1,78 @@
-class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+	class UsersController < ApplicationController
+	  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.order(:username).page(params[:page]).per(5)
-  end
+	#  def login
+	# 	 if request.get?
+	#       render 'users/login'
+	#       else
+	#       user=User.where(email: params[:user][:email].downcase).first
+	#     # if @user.valid_password?(params[:user][:password])
+	#      # 	params[user][:remember_me] == '1'? remember(user) : forget(user)
+	#       if user
+	#         log_in user
+	#         redirect_to root_path
+	#       else
+	#         flash[:error] = t('devise.failure.invalid')
+	#         render 'users/login'
+	#       end
+	#     end
+	# end
 
-  # GET /users/1
-  # GET /users/1.json
-  def show
-  end
+	#   def logout
+	#   	log_out
+ #        redirect_to root_url
+ #      end
 
-  # GET /users/new
-  def new
-    @user = User.new
-    @groups =Group.all
-  end
 
-  # GET /users/1/edit
-  def edit
-  end
+	  # GET /users
+	  # GET /users.json
+	  def index
+	    @users = User.order(:username).page(params[:page]).per(5)
+	  end
 
-  # POST /users
-  # POST /users.json
-  def create
-    @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        # group=Group.find(1);
-         #@user.groups<<group
-         #UserMailer.welcome_email().deliver!
-         #UserMailer.welcome_email(@user).deliver_later
-         
-        format.html { redirect_to @user, notice: 'User was successfully created .'}
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+	  # GET /users/1
+	  # GET /users/1.json
+	  def show
+	  end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
-  def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+	  # GET /users/new
+	
 
-  # DELETE /users/1
-  # DELETE /users/1.json
-  def destroy
-    @users =User.all
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
-       
-    end
-  end
+	  # PATCH/PUT /users/1
+	  # PATCH/PUT /users/1.json
+	  def update
+	    respond_to do |format|
+	      if @user.update(user_params)
+	        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+	        format.json { render :show, status: :ok, location: @user }
+	      else
+	        format.html { render :edit }
+	        format.json { render json: @user.errors, status: :unprocessable_entity }
+	      end
+	    end
+	  end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+	  # DELETE /users/1
+	  # DELETE /users/1.json
+	  def destroy
+	    @users =User.all
+	    @user.destroy
+	    respond_to do |format|
+	      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+	      format.json { head :no_content }
+	   
+	    end
+	  end
+private
+	    # Use callbacks to share common setup or constraints between actions.
+	    def set_user
+	      @user = User.find(params[:id])
+	    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-       params.require(:user).permit(:username, :email,
-        :password,:remember_digest,:first_name,:last_name,:title,:company,:avatar)
-    end
+	    # Never trust parameters from the scary internet, only allow the white list through.
+	    def user_params
+	       params.require(:user).permit(:username, :email,
+	        :password,:remember_digest,:first_name,:last_name,:title,:company,:avatar)
+	    end
 end

@@ -38,13 +38,15 @@
                   <li class="mt10 ml15">
                   <p><%= link_to "Advanced Search", new_search_path %></p>
                 </li>
+                <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>>
               </ul>
+              <!-- check login -->
           <ul class="nav navbar-nav navbar-right">
               <% if logged_in? %>
             <li class="active"><%= current_user.present? ? "Welcome, #{current_user.email}": "Hi,Guest" %></li>
-            <%= link_to "Log out", logout_path, method: "delete" %>
+            <%= link_to "Log out",  destroy_user_session_path, method: "delete" %>
              <%  else %>
-               <li><%= link_to "Log in", login_path %></li>
+               <li><%= link_to "Log in", new_user_session_path %></li>
             <% end %>
           </ul>
         </div><!--/.nav-collapse -->

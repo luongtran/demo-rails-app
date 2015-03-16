@@ -1,28 +1,49 @@
 Rails.application.routes.draw do
-  devise_for :models
+
+  
+
+   controller :registrations do
+       match :register, via: [:get, :post]
+       match :create, via: [:get, :post]
+     end
+ delete 'logout'  => 'sessions#destroy'
+  devise_for :users, :path => '',
+             :path_names => {
+                 :sign_in => "login",
+                 :sign_out => "logout",
+                 :sign_up => "register"},
+             controllers: {
+                 registrations: 'registrations',
+                 #omniauth_callbacks: 'omniauth_callbacks',
+                 sessions: 'sessions',
+                 confirmations: 'confirmations'
+             }
+
+ scope '(:locale)' do
+    # We define here a route inside the locale thats just saves the current locale in the session
+    get 'omniauth/:provider' => 'omniauth#localized', as: :localized_omniauth
+  end
+
+
   resources :messages
 
-  get    'signup'  => 'users#new'
-  get    'login'   => 'sessions#new'
-  post   'login'   => 'sessions#create'
-  delete 'logout'  => 'sessions#destroy'
+  #get    'signup'  => 'users#new'
+  #get    'login'   => 'users#login'
+  #post   'login'   => 'usres#login'
+  #delete 'logout'  => 'users#logout'
 
   resources  :categories
-
   resources  :groups
-
   resources  :users
   resources :reviews
 
   get 'order_items/create'
-
   get 'order_items/update'
-
   get 'order_items/destroy'
-
   get 'carts/show'
 
-  get 'products/index'
+  #get 'products/index'
+
   get 'show_products/:id' => 'categories#show_products' , :as => "show_products"
  
   resources :products
@@ -31,7 +52,7 @@ Rails.application.routes.draw do
   root to: "products#index"
   resources :searches
 
-    resources :messages do
+  resources :messages do
     collection { get :events }
   end
   

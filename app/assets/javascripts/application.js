@@ -16,12 +16,11 @@
 //= require tinymce
 //= require bootstrap
 
-$(document).ready( ->
-  $('.delete_user').bind('ajax:success', ->$(this).closest('tr').fadeOut();
-  );
-  
-  source = new EventSource('/messages/events')
-  source.addEventListener 'messages.create', (e) ->
-  message = $.parseJSON(e.data).message
-  $('#chat').append($('<li>').text("#{message.name}: #{message.content}"))
-);
+$(document).ready(function(){
+//   $('.delete_user').bind('ajax:success', $(this).closest('tr').fadeOut();
+//   var source = new EventSource('/messages/events');
+//   source.addEventListener('messages.create',function(e)){
+//   	message = $.parseJSON(e.data).message;
+//   	$('#chat').append($('<li>').text("#{message.name}: #{message.content}"));
+//   }
+ });

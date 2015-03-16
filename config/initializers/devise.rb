@@ -15,6 +15,11 @@ Devise.setup do |config|
   # available as additional gems.
   require 'devise/orm/active_record'
 
+#config.omniauth :facebook, "722285104555832", "1675958cd6fab14b15d255a82cdaeb34", :strategy_class => OmniAuth::Strategies::Facebook
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :facebook, ENV['722285104555832'], ENV['1675958cd6fab14b15d255a82cdaeb34"']
+end
+#config.omniauth :facebook, "APP_ID", "APP_SECRET", :strategy_class => OmniAuth::Strategies::Facebook
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for
@@ -92,7 +97,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "aa350ff3675fef2ffa185bbe323a72d018fcf414dc09dbb841d680bc51b4037073037a087a6832f65125fc6d45bb90f105f216dc659256b7b13223544f603202"
+  # config.pepper = "812dc0f76fed25f21a2cc453af3f10c6e521cd8cb0aa9046194e3d54e228a59f4e817a2e79ac65e5cd245b49ca08f4336977d524bab5062f522b6d403fc4ee0c"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
