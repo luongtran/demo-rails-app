@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-  
 
-   controller :registrations do
-       match :register, via: [:get, :post]
-       match :create, via: [:get, :post]
-     end
- delete 'logout'  => 'sessions#destroy'
+
+   # controller :registrations do
+   #     match :register, via: [:get, :post]
+   #     match :create, via: [:get, :post]
+    # end
+ #delete 'logout'  => 'sessions#destroy'
+
   devise_for :users, :path => '',
              :path_names => {
                  :sign_in => "login",
@@ -14,15 +15,16 @@ Rails.application.routes.draw do
                  :sign_up => "register"},
              controllers: {
                  registrations: 'registrations',
-                 #omniauth_callbacks: 'omniauth_callbacks',
+                 omniauth_callbacks: 'omniauth_callbacks',
                  sessions: 'sessions',
                  confirmations: 'confirmations'
              }
 
- scope '(:locale)' do
-    # We define here a route inside the locale thats just saves the current locale in the session
-    get 'omniauth/:provider' => 'omniauth#localized', as: :localized_omniauth
-  end
+ 
+
+   #get 'register' => "registrations#register"
+ 
+ 
 
 
   resources :messages

@@ -15,3 +15,7 @@ OrderStatus.create! id: 1, name: "In Progress"
 OrderStatus.create! id: 2, name: "Placed"
 OrderStatus.create! id: 3, name: "Shipped"
 OrderStatus.create! id: 4, name: "Cancelled"
+
+['registered', 'banned', 'moderator', 'admin'].each do |role|
+Role.find_or_create_by({name: role})
+end

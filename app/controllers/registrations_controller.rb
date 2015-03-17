@@ -1,8 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
 
-    def new
+    def register
       @user = User.new
       @groups =Group.all
+      render "users/new"
     end
 
     # GET /users/1/edit
@@ -17,7 +18,6 @@ class RegistrationsController < Devise::RegistrationsController
            #@user.groups<<group
            #UserMailer.welcome_email().deliver!
            #UserMailer.welcome_email(@user).deliver_later
-       
           format.html { redirect_to @user, notice: 'User was successfully created .'}
           format.json { render :show, status: :created, location: @user }
         else
@@ -34,7 +34,7 @@ class RegistrationsController < Devise::RegistrationsController
       end
 
       # Never trust parameters from the scary internet, only allow the white list through.
-      def user_params
+ def user_params
          params.require(:user).permit(:username, :email,
           :password,:remember_digest,:first_name,:last_name,:title,:company,:avatar)
       end

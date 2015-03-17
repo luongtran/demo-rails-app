@@ -16,9 +16,13 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
 
 #config.omniauth :facebook, "722285104555832", "1675958cd6fab14b15d255a82cdaeb34", :strategy_class => OmniAuth::Strategies::Facebook
-Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :facebook, ENV['722285104555832'], ENV['1675958cd6fab14b15d255a82cdaeb34"']
-end
+#Rails.application.config.middleware.use OmniAuth::Builder do
+ # provider :facebook, ENV['722285104555832'], ENV['1675958cd6fab14b15d255a82cdaeb34"']
+#end
+require "omniauth-facebook"
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development? 
+config.omniauth :facebook, "722285104555832", "1675958cd6fab14b15d255a82cdaeb34"
+
 #config.omniauth :facebook, "APP_ID", "APP_SECRET", :strategy_class => OmniAuth::Strategies::Facebook
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
